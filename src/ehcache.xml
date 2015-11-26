@@ -9,7 +9,7 @@
             timeToLiveSeconds="1200">
 </defaultCache>     
 
- <cache name="disks" maxElementsInMemory="10"
+ <cache name="accounts" maxElementsInMemory="10"
            eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
            overflowToDisk="true" memoryStoreEvictionPolicy="LRU" />  
            
