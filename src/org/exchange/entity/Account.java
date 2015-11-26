@@ -30,7 +30,6 @@ public class Account {
 	@OneToMany(mappedBy = "account", fetch=FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<TakenItem> disks;
 	
-	@Cache(usage = org.hibernate.annotations.CacheConcurrencyStrategy.READ_WRITE, region = "org.exchange.entity.TakenItem")
 	@OneToMany(mappedBy = "owner", fetch=FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Disk> own_disks;
 

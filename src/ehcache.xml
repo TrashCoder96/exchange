@@ -9,7 +9,11 @@
             timeToLiveSeconds="1200">
 </defaultCache>     
 
- <cache name="accounts" maxElementsInMemory="10"
+ <cache name="org.exchange.entity.Account" maxElementsInMemory="10"
+           eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
+           overflowToDisk="true" memoryStoreEvictionPolicy="LRU" />  
+           
+  <cache name="accounts" maxElementsInMemory="10"
            eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
            overflowToDisk="true" memoryStoreEvictionPolicy="LRU" />  
            
