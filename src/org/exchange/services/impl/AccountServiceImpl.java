@@ -1,5 +1,8 @@
 package org.exchange.services.impl;
 
+import java.util.List;
+
+import org.exchange.entity.Account;
 import org.exchange.repositories.AccountRepository;
 import org.exchange.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +25,11 @@ public class AccountServiceImpl implements AccountService {
 	{
 		return user_rep.readUserByEmail(email);
 	}
+
+	@Override
+	public List<Account> readAccounts(String email) {
+		return user_rep.readAccounts();
+	}
+	
+	
 }

@@ -29,8 +29,15 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 	@Override
 	@Transactional
-	public org.exchange.entity.Account readUserByEmail(String email) {
-		List<Account> accounts = manager.createQuery("SELECT user FROM Account user WHERE user.email = :email", org.exchange.entity.Account.class).setParameter("email", email).getResultList();
+	public List<Account> readAccounts() {
+		List<org.exchange.entity.Account> accounts = manager.createQuery("SELECT account FROM Account account", org.exchange.entity.Account.class).getResultList();
+	    return accounts;
+	}
+
+	@Override
+	@Transactional
+	public Account readUserByEmail(String email) {
+		List<org.exchange.entity.Account> accounts = manager.createQuery("SELECT account FROM Account account WHERE account.email = :email", org.exchange.entity.Account.class).setParameter("email", email).getResultList();
 		if (accounts.size() > 0)
 		return accounts.get(0);
 		else
@@ -39,9 +46,8 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 	@Override
 	@Transactional
-	public List<org.exchange.entity.Account> readAccounts(Long user_id, String str, Integer count, Integer position) {
-		String pattern = "%" + str;
-		return manager.createQuery("SELECT user FROM Account user WHERE user.email LIKE :pattern", org.exchange.entity.Account.class).setParameter("pattern", pattern).getResultList();
+	public Account find(Long id) {
+		return manager.find(Account.class, id);
 	}
 	
 	

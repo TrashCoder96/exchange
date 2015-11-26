@@ -11,5 +11,8 @@ public interface AccountRepository {
 	
 	public org.exchange.entity.Account readUserByEmail(String email);
 	
-	public List<org.exchange.entity.Account> readAccounts(Long user_id, String str, Integer count, Integer position);
+	public List<org.exchange.entity.Account> readAccounts();
+	
+	public org.exchange.entity.Account find(Long id);
+	
 }

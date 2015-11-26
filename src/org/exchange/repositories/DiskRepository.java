@@ -10,13 +10,13 @@ public interface DiskRepository {
 	
 	public org.exchange.entity.Disk readDiskById(Long id);
 	
-	public List<org.exchange.entity.Disk> findOwnDisks(Long user_id, String str, Integer limit, Integer position);
+	public List<org.exchange.entity.Disk> findOwnDisks(Long user_id);
 	
-	public List<org.exchange.entity.Disk> findFreeDisks(Long user_id, String str, Integer limit, Integer position);
+	public List<org.exchange.entity.Disk> findFreeDisks(Long user_id);
 	
-	public List<org.exchange.entity.Disk> findTakenDisks(Long user_id, String str, Integer limit, Integer position);
+	public List<org.exchange.entity.Disk> findTakenDisks(Long user_id);
 	
-	public List<org.exchange.entity.Disk> findTakenDisksFromUser(Long user_id, String str, Integer limit, Integer position);
+	public List<org.exchange.entity.Disk> findTakenDisksFromUser(Long user_id);
 	
     public org.exchange.entity.Disk takeDisk(Long user_id, Long disk_id);
     
@@ -30,7 +30,9 @@ public interface DiskRepository {
     
     public org.exchange.entity.Disk removeDisk(Long disk_id);
     
-    public Boolean checkDisk(Long user_id, Long disk_id);
+    public Boolean checkTakenDisk(Long user_id, Long disk_id);
+    
+    public Boolean checkOwnerDisk(Long user_id, Long disk_id);
     
     
     

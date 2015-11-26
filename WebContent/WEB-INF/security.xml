@@ -8,11 +8,11 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
 	<http auto-config="true">
-	    <intercept-url pattern="/main_menu**" access="ROLE_USER" />
-	    <intercept-url pattern="/users**" access="ROLE_USER" />
-		<intercept-url pattern="/free_disks**" access="ROLE_USER" />
-		<intercept-url pattern="/own_disks**" access="ROLE_USER" />
-		<intercept-url pattern="/taken_disks**" access="ROLE_USER" />
+	    <intercept-url pattern="/main_menu.xhtml" access="ROLE_USER" />
+	    <intercept-url pattern="/free_disks.xhtml" access="ROLE_USER" />
+		<intercept-url pattern="/own_disks.xhtml" access="ROLE_USER" />
+		<intercept-url pattern="/taken_disks.xhtml" access="ROLE_USER" />
+		<intercept-url pattern="/taken_disks_from_me.xhtml" access="ROLE_USER" />
 		<logout logout-success-url="/" />
 	</http>
 

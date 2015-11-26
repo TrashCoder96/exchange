@@ -1,16 +1,17 @@
 package org.exchange.entity;
 
 import java.util.List;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Disk {
@@ -22,14 +23,13 @@ public class Disk {
 	@Column
 	private String disk_name;
 	
-	@ManyToMany
-	@JoinTable(name = "takenitem")
-	private List<Account> accounts;
+	@OneToMany(mappedBy = "disk", fetch=FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<TakenItem> accounts;
 	
 	@Column
 	private Boolean free;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "owner_id")
 	private Account owner;
 
@@ -49,14 +49,6 @@ public class Disk {
 		this.disk_name = disk_name;
 	}
 
-	public List<Account> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
 	public Account getOwner() {
 		return owner;
 	}
@@ -71,6 +63,14 @@ public class Disk {
 
 	public void setFree(Boolean free) {
 		this.free = free;
+	}
+
+	public List<TakenItem> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<TakenItem> accounts) {
+		this.accounts = accounts;
 	}
 
 }
